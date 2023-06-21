@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Programar Cita Médica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="datetime-local"],
+        textarea {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #0f5186;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        .success-message {
+            text-align: center;
+            margin-top: 20px;
+            color: rgb(11, 129, 113);
+            font-weight: bold;
+        }
+
+        .error-message {
+            text-align: center;
+            margin-top: 20px;
+            color: red;
+            font-weight: bold;
+        }
+
+        .centered {
+            text-align: center;
+        }
+    </style>
+    <script>
+        function clearFields() {
+            var fecha = document.getElementById("fecha");
+            var hora = document.getElementById("hora");
+            var motivo = document.getElementById("motivo");
+            var medico = document.getElementById("medico");
+            var tipoCita = document.getElementById("tipo-cita");
+            var successMessage = document.getElementById("success-message");
+            var reporte = document.getElementById("reporte");
+            var errorMessages = document.getElementById("error-messages");
+
+            fecha.value = "";
+            hora.value = "";
+            motivo.value = "";
+            medico.value = "";
+            tipoCita.value = "";
+            successMessage.style.display = "none";
+            reporte.innerHTML = "";
+            errorMessages.innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+
+    <a href="principal.html">Inicio</a>
+    <h1>Programar Cita Médica</h1>
+
+    <form onsubmit="event.preventDefault(); validateForm();">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required> </p>
+
+        <label for="hora">Hora:</label>
+        <input type="time" id="hora" name="hora" min="08:00" max="16:00" required> </p>
+
+        <label for="motivo">Motivo de la cita:</label>
+        <textarea id="motivo" name="motivo" required></textarea> </p>
+
+        <label for="medico">Médico:</label>
+        <select id="medico" name="medico" required>
+            <option value="" disabled selected>Selecciona un médico</option>
+            <option value="Dr. Juan Pérez">Dr. Juan Pérez</option>
+            <option value="Dr. María López">Dr. María López</option>
+            <option value="Dr. Carlos Ramírez">Dr. Carlos Ramírez</option>
+        </select> </p>
+
+        <label for="tipo-cita">Tipo de Cita:</label>
+        <select id="tipo-cita" name="tipo-cita" required>
+            <option value="" disabled selected>Selecciona el tipo de cita</option>
+            <option value="Cita de control">Cita de control</option>
+            <option value="Cita por primera vez">Cita por primera vez</option>
+            <option value="Cita prioritaria">Cita prioritaria</option>
+        </select> </p>
+
+        <input type="submit" value="Programar Cita"> </p>
+        
+
+        <div id="error-messages" class="error-message"></div>
+    </form>
+
+    <div id="success-message" class="success-message" style="display: none;">Cita médica programada exitosamente.</div>
+    <div id="reporte" class="centered"></div>
+    <input type="button" value="Limpiar Campos" onclick="clearFields()">
+    
+    <script>
+        function validateForm() {
+            var fecha = document.getElementById("fecha");
+            var hora = document.getElementById("hora");
+            var motivo = document.getElementById("motivo");
+            var medico = document.getElementById("medico");
+            var tipoCita = document.getElementById("tipo-cita");
+            var successMessage = document.getElementById("success-message");
+            var reporte = document.getElementById("reporte");
+            var errorMessages = document.getElementById("error-messages");
+            errorMessages.innerHTML = "";
+
+            if (!fecha.value || !hora.value || !motivo.value || !medico.value || !tipoCita.value) {
+                errorMessages.innerHTML = "Por favor, completa todos los campos.";
+            } else {
+                successMessage.style.display = "block";
+                reporte.innerHTML = "Médico Asignado: " + medico.value + "<br>" + "Tipo de Cita: " + tipoCita.value;
+            }
+        }
+    </script>
+</body>
+</html>
