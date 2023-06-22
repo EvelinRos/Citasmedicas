@@ -2,16 +2,25 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <a class = "Inicio" href="inicio.html">Inicio</a>
     <title>Registro</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Arial, Helvetica, sans-serif;
             margin: 0;
             padding: 20px;
+            width: 100%;
+            height: 100vh;
+            background-image:linear-gradient(to top, rgba(16, 16, 98, 0.729) 0%, rgba(65, 60, 60, 0.805) 100%), url(imagenes/medico.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         h1 {
             text-align: center;
+            color: rgb(230, 240, 251);
         }
 
         form {
@@ -22,6 +31,7 @@
         label {
             display: block;
             margin-bottom: 10px;
+            color: rgb(230, 240, 251);
         }
 
         input[type="text"],
@@ -31,13 +41,14 @@
             width: 100%;
             padding: 5px;
             font-size: 16px;
+            border-radius: 10px;
         }
 
         input[type="submit"] {
             width: 103%;
             padding: 10px;
             font-size: 16px;
-            background-color: #0f5186;
+            background-color: rgb(5, 75, 121);
             color: #fff;
             cursor: pointer;
             border-radius: 10px;
@@ -45,10 +56,12 @@
 
         input[type="text"]:invalid {
             border: 1px solid rgb(211, 175, 16);
+            border-radius: 10px;
         }
 
         input[type="text"]:valid {
             border: 1px solid #ccc;
+            border-radius: 10px;
         }
 
         .success-message {
@@ -57,37 +70,68 @@
             color: green;
             font-weight: bold;
         }
+        input[type="reset"] {
+            width: 104%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: rgb(5, 75, 121);
+            color: #fff;
+            cursor: pointer;
+            border-radius: 10px;
+        }
 
-        .centered {
+        input:hover{
+            background-color: whitesmoke;
+            border: 2px solid rgb(127, 206, 255);
+            color: rgb(3, 40, 62);
+        }
+           
+        .Inicio{
+            display: block;
+            width: 6%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            background-color: rgb(5, 64, 102);
+            border-radius: 10px;
+            padding: 15px;
+            color: #fff;
+            text-decoration: none;  
+            cursor: pointer;   
             text-align: center;
         }
+
+        .Inicio:hover{
+            background-color: whitesmoke;
+            border: 2px solid rgb(127, 206, 255);
+            color: rgb(3, 40, 62);
+        }
+
     </style>
     <script>
-        function showSuccessMessage() {
-            var nombre = document.getElementById("nombre");
-            var apellido = document.getElementById("apellido");
-            var email = document.getElementById("email");
-            var password = document.getElementById("password");
-            var telefono = document.getElementById("telefono");
-
-            if (nombre.validity.valid && apellido.validity.valid && email.validity.valid && password.validity.valid && telefono.validity.valid) {
-                var successMessage = document.getElementById("success-message");
-                successMessage.style.display = "block";
-            }
+        function mostrarMensaje() {
+            var nombre = document.getElementById("nombre").value;
+            var apellido = document.getElementById("apellido").value;
+            alert("Bienvenido " + nombre + " " + apellido + ", tu registro fue exitoso. Ahora puedes iniciar sesión.");
+        }
+        function redireccionar() {
+            mostrarMensaje();
+            window.location.href = "loginm.html"; // Cambia "login.html" con la URL de tu página de inicio de sesión
         }
     </script>
 </head>
 <body>
-    <a href="principal.html">Inicio</a>
     
     <h1>Registro Médico</h1>
 
-    <form action="guardar_auxiliar.php" method="POST">
+    <form onsubmit="redireccionar(); return false;" action="guardar_auxiliar.php" method="POST">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required> </p>
 
         <label for="apellido">Apellido:</label>
         <input type="text" id="apellido" name="apellido" required> </p>
+
+        <label for="cedula">Cedula:</label>
+        <input type="text" id="cedula" name="cedula" required> </p>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required> </p>
@@ -101,6 +145,8 @@
 
         <input type="submit" value="Registrar">
     </p>
+    <p>  
+        <input type="reset" name="limpiar" id="limpiar" value="Limpiar Formulario">
     </form>
 </body>
 </html>

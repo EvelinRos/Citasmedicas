@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <a class="Inicio" href="inicio.html">Inicio</a>
+    <a class="Inicio" href="inicio.html">Atrás</a>
+
     <title>Inicio de Sesión</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: rgb(41, 160, 199);
         }
 
         h1 {
             text-align: center;
-            color: azure;
         }
 
         form {
@@ -26,7 +25,6 @@
         label {
             display: block;
             margin-bottom: 10px;
-            color: azure;
         }
 
         input[type="text"],
@@ -35,35 +33,16 @@
             width: 100%;
             padding: 5px;
             font-size: 16px;
-            border-radius: 10px;
         }
 
-        .centered {
-            text-align: center;
-        }
-        input[type="submit"] {
-            width: 103%;
-            padding: 10px;
-            font-size: 16px;
-            background-color: rgb(36, 74, 136);
-            color: #fff;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        input:hover{
-            background-color: whitesmoke;
-            border: 2px solid rgb(127, 206, 255);
-            color: rgb(17, 63, 91);
-        }
-           
         .Inicio{
             display: block;
             width: 6%;
             font-family: Arial, Helvetica, sans-serif;
             font-weight: 700;
-            background-color: rgb(36, 74, 136);
+            background-color: rgb(127, 206, 255);
             border-radius: 10px;
-            padding: 15px;
+            padding: 10px;
             color: #fff;
             text-decoration: none;  
             cursor: pointer;   
@@ -73,8 +52,13 @@
         .Inicio:hover{
             background-color: whitesmoke;
             border: 2px solid rgb(127, 206, 255);
-            color: rgb(16, 69, 101);
+            color: rgb(127, 206, 255);
         }
+
+        .centered {
+            text-align: center;
+        }
+
     </style>
     <script>
         function validateForm() {
@@ -87,13 +71,17 @@
 
             return true;
         }
+
         function mostrarMensaje() {
             alert("Usted ha iniciado sesión");
         }
-    </script>
+        
+    </script>    
 </head>
+    
 <body>
-    <h1>Inicio de Sesión </h1>
+    <h1>Inicio de Sesión - Gestión de Citas Médicas</h1>
+
     <form action="procesar_login.php" method="POST" onsubmit="mostrarMensaje(); return validateForm();">
         <label for="usuario">Usuario:</label>
         <input type="text" id="usuario" name="usuario" required>  </p>
@@ -102,8 +90,9 @@
         <input type="password" id="contrasena" name="contrasena" required>
 
         <p class="centered">
-            <input type="submit" value="Iniciar Sesión">
-        </p>
+            <input type="submit" value="Iniciar Sesión"></p>
+        <p>  
+            <input type="reset" name="limpiar" id="limpiar" value="Limpiar Formulario">
     </form>
 </body>
 </html>

@@ -8,10 +8,16 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            background-image:linear-gradient(to top, rgba(49, 73, 101, 0.729) 0%, rgba(103, 100, 100, 0.805) 100%), url(imagenes/cita.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         h1 {
             text-align: center;
+            color: azure;
         }
 
         form {
@@ -22,6 +28,8 @@
         label {
             display: block;
             margin-bottom: 10px;
+            color: azure;
+            font-size: 20px;
         }
 
         input[type="text"],
@@ -35,11 +43,26 @@
         input[type="submit"] {
             width: 100%;
             padding: 10px;
-            font-size: 16px;
+            font-size: 18px;
             background-color: #0f5186;
             color: #fff;
             cursor: pointer;
             border-radius: 10px;
+        }
+        input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            background-color: #0f5186;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        
+        .botones:hover{
+            background-color: whitesmoke;
+            border: 2px solid rgb(127, 206, 255);
+            color: rgb(3, 40, 62);
         }
 
         textarea {
@@ -62,6 +85,53 @@
 
         .centered {
             text-align: center;
+        }
+        .fecha{
+            display: block;
+            width: 40%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+        .hora{
+            display: block;
+            width: 40%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+        .medico{
+            display: block;
+            width: 55%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+        .tipo{
+            display: block;
+            width: 55%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+        .salir{
+            display: block;
+            width: 6%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            background-color: rgb(5, 64, 102);
+            border-radius: 10px;
+            padding: 15px;
+            color: #fff;
+            text-decoration: none;  
+            cursor: pointer;   
+            text-align: center;
+        }
+
+        .salir:hover{
+            background-color: whitesmoke;
+            border: 2px solid rgb(127, 206, 255);
+            color: rgb(3, 40, 62);
         }
     </style>
     <script>
@@ -88,21 +158,23 @@
 </head>
 <body>
 
-    <a href="principal.html">Inicio</a>
+    <a class="salir" href="inicio.html">Salir</a>
     <h1>Programar Cita Médica</h1>
 
     <form onsubmit="event.preventDefault(); validateForm();">
         <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" name="fecha" required> </p>
+        <input  class="fecha" type="date" id="fecha" name="fecha" required> </p>
 
         <label for="hora">Hora:</label>
-        <input type="time" id="hora" name="hora" min="08:00" max="16:00" required> </p>
+        <input class="hora" type="time" id="hora" name="hora" min="08:00" max="16:00" required> </p>
 
         <label for="motivo">Motivo de la cita:</label>
         <textarea id="motivo" name="motivo" required></textarea> </p>
 
+        <label for="disponible">Disponibilidad Personal Medico</la>
+            <p></p>
         <label for="medico">Médico:</label>
-        <select id="medico" name="medico" required>
+        <select class="medico" id="medico" name="medico" required>
             <option value="" disabled selected>Selecciona un médico</option>
             <option value="Dr. Juan Pérez">Dr. Juan Pérez</option>
             <option value="Dr. María López">Dr. María López</option>
@@ -110,22 +182,21 @@
         </select> </p>
 
         <label for="tipo-cita">Tipo de Cita:</label>
-        <select id="tipo-cita" name="tipo-cita" required>
+        <select class="tipo" id="tipo-cita" name="tipo-cita" required>
             <option value="" disabled selected>Selecciona el tipo de cita</option>
             <option value="Cita de control">Cita de control</option>
             <option value="Cita por primera vez">Cita por primera vez</option>
             <option value="Cita prioritaria">Cita prioritaria</option>
         </select> </p>
 
-        <input type="submit" value="Programar Cita"> </p>
-        
+        <input class="botones" type="submit" value="Programar Cita"> </p>
+        <input class="botones" type="button" value="Limpiar Campos" onclick="clearFields()">
 
         <div id="error-messages" class="error-message"></div>
     </form>
 
     <div id="success-message" class="success-message" style="display: none;">Cita médica programada exitosamente.</div>
     <div id="reporte" class="centered"></div>
-    <input type="button" value="Limpiar Campos" onclick="clearFields()">
     
     <script>
         function validateForm() {
