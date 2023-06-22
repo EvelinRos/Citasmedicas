@@ -112,6 +112,29 @@
         .tabla{
             color: azure;
         }
+        input[type="reset"] {
+            width: 50%;
+            padding: 10px;
+            font-size: 18px;
+            background-color: #0f5186;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 10px;
+            align-items: center;
+        }
+        .botones:hover{
+            background-color: whitesmoke;
+            border: 2px solid rgb(127, 206, 255);
+            color: rgb(3, 40, 62);
+            align-items: center;
+        }
+        .contenedor{
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -175,7 +198,10 @@
                         <option value="16:00">04:00 PM</option>
                     </select>
                 </div>
-                <button class="boton" type="submit">Guardar</button>
+                <div class="contenedor">
+                    <button class="boton" type="submit">Guardar</button>
+                    <input class="botones" type="reset" value="Limpiar Campos">
+                </div>
             </form>
             <p class="info"> Por favor, seleccione la Disponibilidad de horario adecuada</p>
             <table class="tabla" id="horariosTable">
